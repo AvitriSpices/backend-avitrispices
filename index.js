@@ -72,22 +72,24 @@ mongoose.connection.on("disconnected", () => {
 
 const categoryRoutes = require("./routes/categoryRoutes");
 const productRoutes = require("./routes/productRoutes");
-const bannerRoutes = require("./routes/bannerRoutes");
+// const bannerRoutes = require("./routes/bannerRoutes");
 const orderRoutes = require("./routes/ordersRoutes");
 const customerRoutes = require("./routes/customerRoutes");
-const wishlistRoutes = require('./routes/wishlistRoutes');
-const voucher = require('./routes/voucher');
-const reviewRoutes = require("./routes/reviewRoutes");
+const shippingAddressRoutes = require("./routes/shippingAddressRoutes"); 
+// const wishlistRoutes = require('./routes/wishlistRoutes');
+// const voucher = require('./routes/voucher');
+// const reviewRoutes = require("./routes/reviewRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 
 app.use("/api/", productRoutes);
+app.use("/api/shipping-address", shippingAddressRoutes); 
 app.use("/api/categories", categoryRoutes);
-app.use("/api/", bannerRoutes);
+// app.use("/api/", bannerRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/customers", customerRoutes);
-app.use('/api', wishlistRoutes);
-app.use('/api', voucher)
-app.use("/api", reviewRoutes); 
+// app.use('/api', wishlistRoutes);
+// app.use('/api', voucher)
+// app.use("/api", reviewRoutes); 
 app.use("/api/admin", adminRoutes);
 
 app.use((req, res, next) => {
@@ -95,7 +97,7 @@ app.use((req, res, next) => {
 });
 
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8010;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
